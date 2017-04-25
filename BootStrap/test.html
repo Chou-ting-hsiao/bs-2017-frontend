@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map-canvas {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+
+
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJADoRetu48862wwZAykrCrUmO3gOGI90">
+    </script>
+
+    <script>
+      function initialize() {
+         var map;
+        map = new google.maps.Map(document.getElementById('map-canvas'), {
+          zoom:2,
+          center: new google.maps.LatLng(23.8,121.3),
+          mapTypeId: 'terrain'
+        });
+    $.get("http://buildschool-chu.azurewebsites.net/youbike/index",null,function(result,status,xhr){ 
+                 
+                    $(result).each(function (i, item) {
+                      var latLng = new google.maps.LatLng(item.lat,item.lng);
+                            var marker = new google.maps.Marker({
+                              position: latLng,
+                              map: map
+                            });
+                       
+                    });
+                     
+                     
+                }, "jsonp");      
+      }
+             
+
+        function loadScript() {
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp' +
+              '&signed_in=true&callback=initialize';
+          document.body.appendChild(script);
+        }
+
+
+    
+    </script>
+    <script>
+      window.onload = loadScript;
+    </script>
+  
+  </body>
+</html>

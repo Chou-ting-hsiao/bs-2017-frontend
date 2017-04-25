@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('data:image/jpeg;base64,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');
+        }
+
+        .bg-color {
+            background-color: #AFEEEE;
+        }
+
+        .pd-0 {
+            padding: 0;
+        }
+
+        .w-color {
+            background-color: rgb(124, 174, 186);
+            color: white;
+            font-size: 16px;
+        }
+
+        .text {
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid bg-color">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <img src="https://i2.bahamut.com.tw/baha_logo5.png" alt="..." class="img-rounded">
+                </div>
+                <br>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4  pd-0">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+                    </div>
+                    <!-- /input-group -->
+
+                </div>
+
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 pd-0  pull-right">
+                    <form class="form-inline pull-right">
+                        <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>|
+                        <a href="#">我要登入</a>|
+                        <a href="#">註冊</a>|
+
+                        <div class="dropdown pull-right">
+                            <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="true">
+  <span class="glyphicon glyphicon-align-justify"></span> </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </div>
+                    </form><br><br><br>
+                    <form class="form-inline pull-left">
+                        <a href="#">Android</a>|
+                        <a href="#">ios</a>|
+                        <a href="#">線上遊戲</a>|
+                        <a href="#">PC單機</a>|
+                        <a href="#">WEB</a>|
+                        <a href="#">PS4</a>|
+                        <a href="#">PS3</a>|
+                        <a href="#">XBOㄍ</a>|
+                        <a href="#">NS</a>|
+                        <a href="#">3DS</a>|
+                        <a href="#">PSV</a>|
+                        <a href="#">動畫</a>|
+                        <a href="#">漫畫</a>|
+                        <a href="#">輕小說</a>|
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+            </div>
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+    <div class="container text">
+
+        <div class="row">
+            <br>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg2">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a> <span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span></a>GNN新聞
+                    </li>
+                    <li class="list-group-item">
+                        <a> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></a>哈拉區
+                    </li>
+                    <li class="list-group-item">
+                        <a> <span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span></a>APP
+                    </li>
+                    <li class="list-group-item">
+                        <a> <span class="glyphicon glyphicon-oil" aria-hidden="true"></span></a>電玩瘋
+                    </li>
+                    <li class="list-group-item">
+                        <a> <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span></a>動畫瘋
+                    </li>
+                    <li class="list-group-item">
+                        <a> <span class="glyphicon glyphicon-tags" aria-hidden="true"></span></a>公會大廳
+                    </li>
+                    <li class="list-group-item">
+                        <a><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>創作大廳
+                    </li>
+                    <li class="list-group-item">
+                        <a> <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span></a>實況大廳
+                    </li>
+                    <li class="list-group-item">
+                        <a> <span class="glyphicon glyphicon-education" aria-hidden="true"></span></a>勇者造型
+                    </li>
+                    <li class="list-group-item">
+                        <a> <span class="glyphicon glyphicon-bed" aria-hidden="true"></span></a>巴哈商城
+                    </li>
+                    <li class="list-group-item">
+                        <a> <span class="glyphicon glyphicon-star" aria-hidden="true"></span></a>勇者福利社
+                    </li>
+                    <li class="list-group-item">
+                        <a><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span></a>ACG創作大賽
+                    </li>
+                    <li class="list-group-item">
+                        <a><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>會員中心
+                    </li>
+                </ul>
+                <div class="well well-sm pull-center text-center w-color">
+                    動畫瘋新番
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading pd-0"><img src="https://dummyimage.com/163x142.png" alt=""></div>
+                    <div class="panel-body">
+                        <P class="text-center">MARGINAL#4</P>
+                        <P class="text-center"><a>第11集</a>
+                            <font color="#F04F75">今日更新</font>
+                        </P>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading pd-0"><img src="https://dummyimage.com/163x142.png" alt=""></div>
+                    <div class="panel-body">
+                        <P class="text-center">混沌之子</P>
+                        <P class="text-center"><a>第11集</a>
+                            <font color="#F04F75">昨日更新</font>
+                        </P>
+                    </div>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item"><a>雙星之陰陽師(49)</a>
+                        <div class="col-xs- col-sm- col-md- col-lg-">
+                            <span class="label label-warning">週三</span>
+                        </div>
+                    </li>
+                    <li class="list-group-item"><a>ACCA13 區監察課(11)</a>
+                        <div class="col-xs- col-sm- col-md- col-lg-">
+                            <span class="label label-warning">週三</span>
+                        </div>
+                    </li>
+                    <li class="list-group-item"><a>黑白來看守所(25)</a>
+                        <div class="col-xs- col-sm- col-md- col-lg-">
+                            <span class="label label-warning">週三</span>
+                        </div>
+                    </li>
+                    <li class="list-group-item"><a>Hand Shakers(11)</a>
+                        <div class="col-xs- col-sm- col-md- col-lg-">
+                            <span class="label label-warning">週三</span>
+                        </div>
+                    </li>
+                    <li class="list-group-item"><a>進擊的巨人 第二季(特別篇4)</a>
+                        <div class="col-xs- col-sm- col-md- col-lg-">
+                            <span class="label label-warning">週二</span>
+                        </div>
+                    </li>
+                    <li class="list-group-item"><a>喵阿楞！(25)</a>
+                        <div class="col-xs- col-sm- col-md- col-lg-">
+                         <span class="label label-warning">週二</span>
+                    </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="panel panel-default">
+  <div class="panel-body pd-0">
+   <ul class="nav nav-tabs">
+                  <li role="presentation" class="active"><a href="#">Home</a></li>
+                    <li role="presentation"><a href="#">Profile</a></li>
+                    <li role="presentation"><a href="#">Messages</a></li>
+                </ul>
+                <div class="row">
+    
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+    <p class="text-center">手機</p>
+    <img src="https://dummyimage.com/115x132.png">
+     <a>《拉比哩比》開發團隊新作《D 級特工》開放事前登錄暨刪檔封測報名</a>
+    </div>
+     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        <p class="text-center">手機</p>
+         <img src="https://dummyimage.com/115x132.png">
+     <a>《拉比哩比》開發團隊新作《D 級特工》開放事前登錄暨刪檔封測報名</a>
+    </div>
+     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+       <p class="text-center">OLG</p>
+        <img src="https://dummyimage.com/115x132.png">
+     <a>《拉比哩比》開發團隊新作《D 級特工》開放事前登錄暨刪檔封測報名</a>
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+       <p class="text-center">其他</p>
+        <img src="https://dummyimage.com/115x132.png">
+     <a>《拉比哩比》開發團隊新作《D 級特工》開放事前登錄暨刪檔封測報名</a>
+    </div>
+    <hr><hr>
+     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+    <p class="text-center">手機</p>
+    <img src="https://dummyimage.com/115x132.png">
+     <a>《拉比哩比》開發團隊新作《D 級特工》開放事前登錄暨刪檔封測報名</a>
+    </div>
+     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        <p class="text-center">手機</p>
+         <img src="https://dummyimage.com/115x132.png">
+     <a>《拉比哩比》開發團隊新作《D 級特工》開放事前登錄暨刪檔封測報名</a>
+    </div>
+     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+       <p class="text-center">OLG</p>
+        <img src="https://dummyimage.com/115x132.png">
+     <a>《拉比哩比》開發團隊新作《D 級特工》開放事前登錄暨刪檔封測報名</a>
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+       <p class="text-center">其他</p>
+        <img src="https://dummyimage.com/115x132.png">
+     <a>《拉比哩比》開發團隊新作《D 級特工》開放事前登錄暨刪檔封測報名</a>
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+             
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>

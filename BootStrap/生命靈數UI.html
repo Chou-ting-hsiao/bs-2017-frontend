@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet">
+    
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+     <script src="dist/sweetalert.js"></script>
+    <link rel="stylesheet" href="dist/sweetalert.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div>
+            <h1 class="text-center">生命靈數</h1>
+            <label for="bookdate">日期：</label>
+            <div class="input-group">
+
+                <input type="text" class="form-control" id="bookdate">
+                <span class="input-group-btn">
+        <button class="btn btn-default" id="caculate" type="button">Go!</button>
+      </span>
+            </div>
+            <!-- /input-group -->
+
+        </div>
+    </div>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.zh-TW.min.js"></script>
+  
+
+<script>
+     $(function () {
+      
+      $("#bookdate").datepicker({
+          language: 'zh-TW',
+          format: 'yyyy-mm-dd'
+      });
+
+          document.getElementById("caculate").onclick=doAnalysis;
+
+    //主要執行區
+          function doAnalysis() {
+          
+           var star="";
+           var date = document.getElementById("bookdate").value
+          star= getstr(date);
+          var url = "https://gist.githubusercontent.com/dinowang/5290d4cebf96a666c29ab0878afeb2f1/raw/9516581cb54154d070cf287ebd31d9bce217a495/" + star + ".json";
+          
+          $.get(url,null,function(result,status,xhr){ 
+
+                   var index = cacul(date);
+
+        //   $.get(url, null, function (result, status, xhr) {
+        //              var html = "<p><span class='label label-info'>" + 
+        //               birthdate + "</span> 出生的你，星座是 <em>" + 
+        //               result.name + "</em></p>" +
+        //               "<p>你的生命靈數：<br>" + index + ". " + 
+        //               result.lookup[index - 1] + "</p>";
+
+        //     $("<li></li>")
+        //       .addClass("list-group-item")
+        //       .html(html)
+        //       .prependTo("#results");
+        //   }, "json");
+
+                 swal({
+                    title: result.name,
+                    text: "你的生命靈數:" + index + ". \n " +result.lookup[index - 1],
+                    imageUrl: "images/"+star+".jpg"//'http://y2.ifengimg.com/5ba263ecb1255eea/2013/0903/rdn_522547dd25c5d.jpg'
+                    });
+                }, "JSON")
+
+        //   alert(horoscopeData[star].name +"靈數"+count+horoscopeData[star].lookup[count-1]);
+            
+        }
+           $(document).ajaxError(function (event, xhr, settings) {
+        console.log(arguments);
+        alert("無法取得 server 上的資料");
+      });
+    //取得星座
+          function getstr(date) {
+               var now=new Date(date);
+               var mon=(now.getMonth()+1).toString();
+               var day=now.getDate();
+
+        if((mon==1&& day>=20)||(mon==2 && day<=18))
+           {
+                return "aquarius";
+           }
+           else if((mon==2&& day>=19)||(mon==3 && day<=20))
+           {
+                return "pisces";
+           }
+           else if((mon==3&& day>=21)||(mon==4 && day<=19))
+           {
+                return "aries";
+           }
+           else if((mon==4&& day>=20)||(mon==5 && day<=20))
+           {
+                return "taurus";
+           }
+           else if((mon==5&& day>=21)||(mon==6 && day<=21))
+           {
+                return "gemini";
+           }
+           else if((mon==6&& day>=22)||(mon==7 && day<=22))
+           {
+                return "cancer";
+           }
+           else if((mon==7&& day>=23)||(mon==8 && day<=22))
+           {
+                return "leo";
+           }
+           else if((mon==8&& day>=23)||(mon==9 && day<=22))
+           {
+                return "virgo";
+           }
+           else if((mon==9&& day>=23)||(mon==10 && day<=23))
+           {
+                return "libra";
+           }
+           else if((mon==10&& day>=24)||(mon==11 && day<=21))
+           {
+                return "scorpio";
+           }
+           else if((mon==11&& day>=22)||(mon==12 && day<=21))
+           {
+                return "sagittarius";
+           }
+           else if((mon==12&& day>=22)||(mon==1 && day<=19))
+           {
+                return "capricorn";
+           }
+            
+            
+        }
+
+    //取得靈數
+        //       function getnum() {
+        //     var date = document.getElementById("bookdate").value
+        //     alert(cacul(date));
+            
+        // }
+          
+           function cacul(date) {
+           var num = 0;
+            for (var i = 0; i < date.length; i++) {
+                if (i == 4 || i == 7) {
+                    continue;
+                }
+                var e = parseInt(date.charAt(i), 10);
+                num =num + e;
+
+            }
+             if (parseInt(num,10) > 9) {
+                 return cacul(num.toString());
+          }
+                   return num; 
+        }
+});
+    </script>
+</body>
+
+</html>
