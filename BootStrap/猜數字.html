@@ -29,11 +29,17 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+     <style>
+        body {
+            background-image: url('data:image/jpeg;base64,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');
+        }
+        
+    </style>
 </head>
 
 <body waid71fa0d88-5390-4b5b-a2f4-e45fa93d85e2="SA password protect entry checker">
   
- <pre>
+ 
   
 <script>
    var  answer="";
@@ -124,7 +130,6 @@
   }
  
 </script>
-</pre>
 
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
@@ -154,24 +159,26 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-3 col-md-2 sidebar">
+       <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
-          <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-          <li><a href="#">Reports</a></li>
-          <li><a href="#">Analytics</a></li>
-          <li><a href="#">Export</a></li>
+          <li class="active"><a href="index.html">首頁<span class="sr-only">(current)</span></a></li>
+         
+          <li><a href="猜數字.html">猜數字</a></li>
+           <li><a href="溫度.html">溫度轉換</a></li>
+           <li><a href="生命靈數UI.html">生命靈數UI</a></li>
+            <li><a href="Mole.html" >打地鼠</a></li>
+        </ul>
+           <ul class="nav nav-sidebar">
+           <li><a href="Anna.html">BootStrapPractice1</a></li>
+           <li><a href="Giant.html">BootStrapPractice2</a></li>
+           <li><a href="肉球.html">肉球新聞</a></li>
         </ul>
         <ul class="nav nav-sidebar">
-          <li><a href="">Nav item</a></li>
-          <li><a href="">Nav item again</a></li>
-          <li><a href="">One more nav</a></li>
-          <li><a href="">Another nav item</a></li>
-          <li><a href="">More navigation</a></li>
-        </ul>
-        <ul class="nav nav-sidebar">
-          <li><a href="">Nav item again</a></li>
-          <li><a href="">One more nav</a></li>
-          <li><a href="">Another nav item</a></li>
+          <li><a href="hsinchu-freebus.html">新竹市免費公車預估到站時刻表</a></li>
+          <li><a href="parkinglots.html">路外停車資訊</a></li>
+          <li><a href="youbike-tmpl.html">youbike地圖</a></li>
+          <li><a href="youbike-tmpl-waterflow.html">youbike瀑布流</a></li>
+          <li><a href="youbike-tmpl3.html">youbike地圖mark</a></li>
         </ul>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
